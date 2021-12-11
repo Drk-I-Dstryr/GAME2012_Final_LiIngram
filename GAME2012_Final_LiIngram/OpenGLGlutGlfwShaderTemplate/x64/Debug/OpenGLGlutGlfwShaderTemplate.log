@@ -1,0 +1,22 @@
+﻿  GAME2012_Final_LiIngram.cpp
+C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(36,23): warning C4267: 'return': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(98,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(161,1): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(173,30): warning C4244: 'argument': conversion from 'int' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(174,30): warning C4244: 'argument': conversion from 'int' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=GLfloat
+          ]
+C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(217,1): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(309,1): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(327,1): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(338,1): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(385,1): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(403,1): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(434,1): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  OpenGLGlutGlfwShaderTemplate.vcxproj -> C:\Users\russe\Downloads\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\x64\Debug\OpenGLGlutGlfwShaderTemplate.exe
