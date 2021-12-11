@@ -47,7 +47,7 @@ using namespace std;
 
 #define BUFFER_OFFSET(x)  ((const void*) (x))
 #define FPS 60
-#define MOVESPEED 0.5f
+#define MOVESPEED 0.1f
 #define TURNSPEED 0.05f
 #define X_AXIS glm::vec3(1,0,0)
 #define Y_AXIS glm::vec3(0,1,0)
@@ -250,6 +250,22 @@ void init(void)
 	stbi_image_free(image);
 	// End fifth image.
 
+	// Load sixth image.
+	image = stbi_load("TowerDoor3.png", &width, &height, &bitDepth, 0);
+	if (!image) { cout << "Unable to load file!" << endl; }
+	glGenTextures(1, &sixthID);
+	glBindTexture(GL_TEXTURE_2D, sixthID);
+	// Note: image types with native transparency will need to be GL_RGBA instead of GL_RGB.
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	// glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glGenerateMipmap(GL_TEXTURE_2D);
+	stbi_image_free(image);
+	// End sixth image.
+
 	glUniform1i(glGetUniformLocation(program, "texture0"), 0);
 
 	// Setting material values.
@@ -380,7 +396,9 @@ void display(void)
 	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
 	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
 	g_cube.DrawShape(GL_TRIANGLES);
-
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//Back Merlon and Crenels
 	//Back Merlon1
 	glBindTexture(GL_TEXTURE_2D, fifthID);
 	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 0.0f, glm::vec3(7.0f, 15.0f, -0.2f));
@@ -886,10 +904,1132 @@ void display(void)
 	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
 	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
 	g_cube.DrawShape(GL_TRIANGLES);
+	////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	//Right Merlon and Crenels
+
+	//Right Merlon1
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -4.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon2
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -6.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon3
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -8.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon4
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -10.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon5
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -12.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon6
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -14.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon7
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -16.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon8
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -18.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon9
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -20.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon10
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -22.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon11
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -24.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon12
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -26.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon13
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -28.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon14
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -30.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon15
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -32.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon16
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -34.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon17
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -36.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon18
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -38.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon19
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -40.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon20
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -42.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon21
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -5.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon22
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -7.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon23
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -9.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon24
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -11.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon25
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -13.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon26
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -15.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon27
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -17.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon28
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -19.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon29
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -21.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon30
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -23.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon31
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -25.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon32
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -27.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon33
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -29.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon34
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -31.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon35
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -33.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon36
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -35.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon37
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -37.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon38
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -39.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Merlon39
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -41.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel1
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -3.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel2
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -5.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel3
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -7.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel4
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -9.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel5
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -11.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel6
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -13.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel7
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -15.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel8
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -17.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel9
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -19.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel10
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -21.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel11
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -23.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel12
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -25.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel13
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -27.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel14
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -29.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel15
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -31.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel16
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -33.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel17
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -35.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel18
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -37.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel19
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -39.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel20
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -41.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel21
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -43.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel22
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -4.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel23
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -6.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel24
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -8.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel25
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -10.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel26
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -12.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel27
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -14.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel28
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -16.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel29
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -18.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel30
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -20.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel31
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -22.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel32
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -24.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel33
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -26.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel34
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -28.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel35
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -30.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel36
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -32.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel37
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -34.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel38
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -36.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel39
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -38.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel40
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -40.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Right Crenel41
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -42.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//Left Merlons and Crenels
+
+	//Left Merlon1
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -5.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon2
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -7.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon3
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -9.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon4
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -11.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon5
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -13.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon6
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -15.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon7
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -17.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon8
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -19.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon9
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -21.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon10
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -23.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon11
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -25.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon12
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -27.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon13
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -29.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon14
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -31.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon15
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -33.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon16
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -35.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon17
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -37.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon18
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -39.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon19
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -41.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon20
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(45.3f, 15.0f, -43.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon21
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -5.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon22
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -7.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon23
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -9.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon24
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -11.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon25
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -13.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon26
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -15.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon27
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -17.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon28
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -19.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon29
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -21.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon30
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -23.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon31
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -25.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon32
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -27.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon33
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -29.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon34
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -31.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon35
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -33.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon36
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -35.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon37
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -37.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon38
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -39.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Merlon39
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 2.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -41.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel1
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -3.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel2
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -5.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel3
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -7.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel4
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -9.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel5
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -11.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel6
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -13.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel7
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -15.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel8
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -17.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel9
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -19.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel10
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -21.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel11
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -23.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel12
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -25.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel13
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -27.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel14
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -29.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel15
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -31.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel16
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -33.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel17
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -35.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel18
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -37.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel19
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -39.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel20
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -41.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel21
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(0.8f, 15.0f, -43.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel22
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -4.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel23
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -6.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel24
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -8.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel25
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -10.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel26
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -12.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel27
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -14.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel28
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -16.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel29
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -18.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel30
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -20.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel31
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -22.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel32
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -24.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel33
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -26.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel34
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -28.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel35
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -30.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel36
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -32.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel37
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -34.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel38
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -36.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel39
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -38.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel40
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -40.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Left Crenel41
+	glBindTexture(GL_TEXTURE_2D, fifthID);
+	transformObject(glm::vec3(1.0f, 1.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(3.8f, 15.0f, -42.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//Doors
+	//Tower Door1
+	glBindTexture(GL_TEXTURE_2D, sixthID);
+	transformObject(glm::vec3(2.0f, 3.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(6.5f, 15.0f, -0.5f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Tower Door2
+	glBindTexture(GL_TEXTURE_2D, sixthID);
+	transformObject(glm::vec3(2.0f, 3.0f, 0.5f), Y_AXIS, 90.0f, glm::vec3(42.5f, 15.0f, -0.5f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Tower Door3
+	glBindTexture(GL_TEXTURE_2D, sixthID);
+	transformObject(glm::vec3(2.0f, 3.0f, 0.5f), Y_AXIS, 0.0f, glm::vec3(1.5f, 15.0f, -4.5f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	//Tower Door4
+	glBindTexture(GL_TEXTURE_2D, sixthID);
+	transformObject(glm::vec3(2.0f, 3.0f, 0.5f), Y_AXIS, 0.0f, glm::vec3(1.5f, 15.0f, -43.5f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// Back Towers
 	// Back right tower.
 	glBindTexture(GL_TEXTURE_2D, thirdID);
-	transformObject(glm::vec3(7.0f, 18.0f, 7.0f), X_AXIS, 0.0f, glm::vec3(0.0f, 0.0f, -4.5f));
+	transformObject(glm::vec3(7.0f, 18.0f, 7.0f), X_AXIS, 0.0f, glm::vec3(-0.1f, 0.0f, -4.5f));
 	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
 	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
 	g_prism.DrawShape(GL_TRIANGLES);
@@ -899,7 +2039,9 @@ void display(void)
 	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), mat.specularStrength);
 	glUniform1f(glGetUniformLocation(program, "mat.shininess"), mat.shininess);
 	g_prism.DrawShape(GL_TRIANGLES);
-
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// Front Towers
 	// Front right tower.
 	transformObject(glm::vec3(7.0f, 18.0f, 7.0f), X_AXIS, 0.0f, glm::vec3(0.0f, 0.0f, -50.0f));
 	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), mat.specularStrength);
@@ -911,7 +2053,9 @@ void display(void)
 	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), mat.specularStrength);
 	glUniform1f(glGetUniformLocation(program, "mat.shininess"), mat.shininess);
 	g_prism.DrawShape(GL_TRIANGLES);
+	///////////////////////////////////////////////////////////////////////////////////////////////////
 
+	// Back roofs
 	// Back right tower roof.
 	glBindTexture(GL_TEXTURE_2D, fourthID);
 	transformObject(glm::vec3(9.0f, 6.0f, 9.0f), X_AXIS, 0.0f, glm::vec3(-1.0f, 18.0f, -5.5f));
@@ -925,7 +2069,9 @@ void display(void)
 	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
 	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
 	g_cone.DrawShape(GL_TRIANGLES);
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	// Front roofs
 	// Front right tower roof.
 	glBindTexture(GL_TEXTURE_2D, fourthID);
 	transformObject(glm::vec3(9.0f, 6.0f, 9.0f), X_AXIS, 0.0f, glm::vec3(-1.0f, 18.0f, -51.0f));
@@ -939,7 +2085,7 @@ void display(void)
 	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
 	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
 	g_cone.DrawShape(GL_TRIANGLES);
-
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	glBindTexture(GL_TEXTURE_2D, 0);
 	
 	glutSwapBuffers(); // Now for a potentially smoother render.
