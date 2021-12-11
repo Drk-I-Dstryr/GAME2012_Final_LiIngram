@@ -385,6 +385,13 @@ void display(void)
 	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
 	g_cube.DrawShape(GL_TRIANGLES);
 
+	// Front wall1.
+	glBindTexture(GL_TEXTURE_2D, secondID);
+	transformObject(glm::vec3(20.0f, 15.0f, 3.0f), X_AXIS, 0.0f, glm::vec3(2.5f, 0.0f, -45.5f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
 	//Left wall
 	transformObject(glm::vec3(43.0f, 15.0f, 3.0f), Y_AXIS, 90.0f, glm::vec3(1.0f, 0.0f, -3.0f));
 	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
