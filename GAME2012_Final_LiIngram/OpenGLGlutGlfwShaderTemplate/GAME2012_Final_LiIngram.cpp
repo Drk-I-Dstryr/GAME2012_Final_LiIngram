@@ -160,6 +160,7 @@ int lastX, lastY;
 // Geometry data.
 Grid g_grid(50); // ground
 Cube g_cube;
+Cube g_ccube;
 Prism g_prism(20); // Towers
 Prism g_prism2(10); // Guardhouse towers
 Cone g_cone2(10); // Guardhouse tower roof
@@ -520,6 +521,7 @@ void init(void)
 	// All VAO/VBO data now in Shape.h! But we still need to do this AFTER OpenGL is initialized.
 	g_grid.BufferShape();
 	g_cube.BufferShape();
+	g_ccube.BufferShape();
 	g_prism.BufferShape();
 	g_prism2.BufferShape();
 	g_cone.BufferShape();
@@ -540,6 +542,7 @@ void init(void)
 	glCullFace(GL_BACK);
 
 	timer(0); // Setup my recursive 'fixed' timestep/framerate.
+	glClearColor(0.5, 0.1, 0.0, 0.0);
 }
 
 //---------------------------------------------------------------------
@@ -560,6 +563,17 @@ void calculateView()
 		position + frontVec, // Look target
 		upVec); // Up vector
 }
+
+// distance mechanic
+glm::vec3 gatePos = glm::vec3(0.0f,0.0f,0.0f);
+
+glm::vec3 cursedCubePos = glm::vec3(0.0f, 0.0f, 0.0f);
+
+glm::vec3 pedestalPos = glm::vec3(0.0f, 0.0f, 0.0f);
+//
+bool gateOpen = false;
+bool gotCube = false;
+bool placedCube = false;
 
 //---------------------------------------------------------------------
 //
@@ -3268,7 +3282,37 @@ void display(void)
 	transformObject(glm::vec3(0.5f, 0.5f, 0.5f), X_AXIS, 0.0f, glm::vec3(10.5f, 2.0f, -13.0f));
 	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
 	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
-	g_cube.DrawShape(GL_TRIANGLES);
+	g_ccube.DrawShape(GL_TRIANGLES);
+
+	gatePos = glm::vec3(22.5f, 1.5f, -47.0f);
+	cursedCubePos = glm::vec3(10.5f, 2.0f, -13.0f);
+	pedestalPos = glm::vec3(24.5f, 0.0f, -23.0f);
+
+	//if (gatePos.z - position.z <= 0  && gateOpen == false || gatePos.x - position.x <= 0 && gateOpen == false || gatePos.y - position.y <= 0 && gateOpen == false)
+	//{
+	//	cout << "Before you can leave you have to place me (a cube) on my pedestal in the center of the maze." << endl;
+	//}
+
+	//if (cursedCubePos.x - position.x <= 0 && placedCube == false || cursedCubePos.y - position.y <= 0 && placedCube == false || cursedCubePos.z - position.z <= 0 && placedCube == false)
+	//{
+	//	//g_ccube.Shape::~Shape();
+	//	cout << "Place me on my pedestal in the center of the maze." << endl;
+	//	gotCube = true;
+	//}
+
+	//if (pedestalPos.x - position.x <= 0 && placedCube == false && gotCube == true || pedestalPos.y - position.y <= 0 && placedCube == false && gotCube == true || pedestalPos.z - position.z <= 0 && placedCube == false && gotCube == true)
+	//{
+	//	gateOpen = true;
+	//	placedCube = true;
+	//	cout << "Now you may go" << endl;
+	//	// Cursed Cube.
+	//	//glBindTexture(GL_TEXTURE_2D, ohnoID);
+	//	//transformObject(glm::vec3(0.5f, 0.5f, 0.5f), X_AXIS, 0.0f, glm::vec3(25.5f, 10.0f, -25.0f));
+	//	//glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	//	//glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	//	//g_ccube.DrawShape(GL_TRIANGLES);
+
+	//}
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 	

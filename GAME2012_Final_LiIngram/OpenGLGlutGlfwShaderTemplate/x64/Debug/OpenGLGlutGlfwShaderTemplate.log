@@ -19,4 +19,5 @@ C:\Users\russe\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwSha
 C:\Users\russe\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(385,1): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
 C:\Users\russe\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(403,1): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
 C:\Users\russe\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\Shape.h(434,1): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\russe\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\OpenGLGlutGlfwShaderTemplate\GAME2012_Final_LiIngram.cpp(545,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
   OpenGLGlutGlfwShaderTemplate.vcxproj -> C:\Users\russe\GAME2012_Final_LiIngram\GAME2012_Final_LiIngram\x64\Debug\OpenGLGlutGlfwShaderTemplate.exe
