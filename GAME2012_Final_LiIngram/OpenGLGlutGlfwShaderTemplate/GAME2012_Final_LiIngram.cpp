@@ -84,7 +84,8 @@ glm::mat4 View, Projection;
 unsigned char keys = 0; // Initialized to 0 or 0b00000000.
 
 // Texture variables.
-GLuint groundID, wallID, towerwallID, roof1ID, merlonID, towerdoorID, stairID, gateID, roof2ID, emblemID;
+GLuint groundID, wallID, towerwallID, roof1ID, merlonID, towerdoorID, stairID, gateID, roof2ID, emblemID,
+ohnoID, woodID, marbleID;
 GLint width, height, bitDepth;
 
 // Light objects. Now OOP.
@@ -98,17 +99,17 @@ DirectionalLight dLight(
 	0.0f);							// Diffuse strength.
 
 PointLight pLights[2] = { 
-	{ glm::vec3(5.0f, 1.0f, -2.5f),	// Position.
+	{ glm::vec3(5.0f, 2.0f, -40.0f),	// Position.
+	50.0f,							// Range.
+	1.0f, 4.5f, 75.0f,				// Constant, Linear, Quadratic.   
+	glm::vec3(1.0f, 1.0f, 1.0f),	// Diffuse colour.
+	2.0f },							// Diffuse strength.
+
+	{ glm::vec3(40.0f, 2.0f, -40.0f),	// Position.
 	10.0f,							// Range.
 	1.0f, 4.5f, 75.0f,				// Constant, Linear, Quadratic.   
-	glm::vec3(0.1f, 0.2f, 1.0f),	// Diffuse colour.
-	1.0f },							// Diffuse strength.
-
-	{ glm::vec3(5.0f, 0.5f, -7.5f),	// Position.
-	2.0f,							// Range.
-	1.0f, 4.5f, 75.0f,				// Constant, Linear, Quadratic.   
-	glm::vec3(1.0f, 0.2f, 0.2f),	// Diffuse colour.
-	1.0f } };						// Diffuse strength.
+	glm::vec3(1.0f, 1.0f, 1.0f),	// Diffuse colour.
+	2.0f } };						// Diffuse strength.
 
 SpotLight sLight(
 	glm::vec3(5.0f, 3.0f, -5.0f),	// Position.
@@ -332,6 +333,38 @@ void init(void)
 	stbi_image_free(image);
 	// End ninth image.
 
+	// Load tenth image.
+	image = stbi_load("Wood.jpg", &width, &height, &bitDepth, 0);
+	if (!image) { cout << "Unable to load file!" << endl; }
+	glGenTextures(1, &woodID);
+	glBindTexture(GL_TEXTURE_2D, woodID);
+	// Note: image types with native transparency will need to be GL_RGBA instead of GL_RGB.
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	// glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glGenerateMipmap(GL_TEXTURE_2D);
+	stbi_image_free(image);
+	// End tenth image.
+
+	// Load eleventh image.
+	image = stbi_load("Marble.jpg", &width, &height, &bitDepth, 0);
+	if (!image) { cout << "Unable to load file!" << endl; }
+	glGenTextures(1, &marbleID);
+	glBindTexture(GL_TEXTURE_2D, marbleID);
+	// Note: image types with native transparency will need to be GL_RGBA instead of GL_RGB.
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	// glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glGenerateMipmap(GL_TEXTURE_2D);
+	stbi_image_free(image);
+	// End eleventh image.
+
 	glUniform1i(glGetUniformLocation(program, "texture0"), 0);
 
 	// Setting material values.
@@ -487,6 +520,18 @@ void display(void)
 	g_cube.DrawShape(GL_TRIANGLES);
 
 	transformObject(glm::vec3(5.0f, 0.5f, 4.0f), X_AXIS, 0.0f, glm::vec3(22.5f, 1.0f, -48.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+	
+	// Railings.
+	glBindTexture(GL_TEXTURE_2D, woodID);
+	transformObject(glm::vec3(0.1f, 0.1f, 5.0f), X_AXIS, 45.0f, glm::vec3(22.39f, 3.0f, -45.5f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	transformObject(glm::vec3(0.1f, 0.1f, 5.0f), X_AXIS, 45.0f, glm::vec3(27.51f, 3.0f, -45.5f));
 	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
 	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
 	g_cube.DrawShape(GL_TRIANGLES);
