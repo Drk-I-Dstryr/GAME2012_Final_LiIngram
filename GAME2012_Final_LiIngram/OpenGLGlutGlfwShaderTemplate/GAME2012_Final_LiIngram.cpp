@@ -84,7 +84,7 @@ glm::mat4 View, Projection;
 unsigned char keys = 0; // Initialized to 0 or 0b00000000.
 
 // Texture variables.
-GLuint groundID, wallID, towerwallID, roof1ID, merlonID, towerdoorID, stairID, gateID, roof2ID;
+GLuint groundID, wallID, towerwallID, roof1ID, merlonID, towerdoorID, stairID, gateID, roof2ID, emblemID;
 GLint width, height, bitDepth;
 
 // Light objects. Now OOP.
@@ -316,6 +316,22 @@ void init(void)
 	stbi_image_free(image);
 	// End ninth image.
 
+	// Load ninth image.
+	image = stbi_load("Kakapo2.png", &width, &height, &bitDepth, 0);
+	if (!image) { cout << "Unable to load file!" << endl; }
+	glGenTextures(1, &emblemID);
+	glBindTexture(GL_TEXTURE_2D, emblemID);
+	// Note: image types with native transparency will need to be GL_RGBA instead of GL_RGB.
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	// glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glGenerateMipmap(GL_TEXTURE_2D);
+	stbi_image_free(image);
+	// End ninth image.
+
 	glUniform1i(glGetUniformLocation(program, "texture0"), 0);
 
 	// Setting material values.
@@ -478,6 +494,13 @@ void display(void)
 	// Castle gate.
 	glBindTexture(GL_TEXTURE_2D, gateID);
 	transformObject(glm::vec3(5.0f, 8.0f, 0.5f), X_AXIS, 0.0f, glm::vec3(22.5f, 1.5f, -47.0f));
+	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
+	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
+	g_cube.DrawShape(GL_TRIANGLES);
+
+	// Emblem.
+	glBindTexture(GL_TEXTURE_2D, emblemID);
+	transformObject(glm::vec3(2.0f, 2.0f, 0.0001f), X_AXIS, 0.0f, glm::vec3(24.0f, 10.0f, -44.99f));
 	glUniform1f(glGetUniformLocation(program, "mat.specularStrength"), 1.0f);
 	glUniform1f(glGetUniformLocation(program, "mat.shininess"), 128);
 	g_cube.DrawShape(GL_TRIANGLES);
